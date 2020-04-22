@@ -30,6 +30,5 @@ RUN set -eux; \
         cd /; \
         rm -rf /tmp/libvmod-dynamic*; \
         apk del .vmod-build-deps
-COPY path/to/vcl/files/*.vcl /usr/local/etc/varnish/
 # Run varnish and also print logs on stdout
 CMD ["/bin/sh", "-o", "pipefail", "-c", "varnishd -f /usr/local/etc/varnish/default.vcl | varnishncsa -F '%h %l %u %t \"%r\" %s %b \"%{Referer}i\" \"%{User-agent}i\" \"%{Varnish:handling}x\"'"]
